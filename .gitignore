@@ -1,0 +1,31 @@
+# Виртуальное окружение
+venv/
+env/
+.venv/
+
+# Кеш Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Файлы IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Локальные настройки
+.env
+.env.local
+
+# Логи и временные файлы
+*.log
+*.tmp
+
+# Пакеты Python (если используете pipenv/poetry)
+Pipfile.lock
+poetry.lock
+
+# Другие возможные окружения
+.python-version
+.direnv
