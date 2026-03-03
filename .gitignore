@@ -21,6 +21,7 @@ __pycache__/
 # Логи и временные файлы
 *.log
 *.tmp
+install_log.txt
 
 # Пакеты Python (если используете pipenv/poetry)
 Pipfile.lock
