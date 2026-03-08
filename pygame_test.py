@@ -1,14 +1,9 @@
-# game.py
-
 import pygame
 from gameparts import Board
 
 
 pygame.init()
 
-# Здесь определены разные константы, например 
-# размер ячейки и доски, цвет и толщина линий.
-# Эти константы используются при отрисовке графики. 
 CELL_SIZE = 100
 BOARD_SIZE = 3
 WIDTH = HEIGHT = CELL_SIZE * BOARD_SIZE
@@ -21,16 +16,11 @@ X_WIDTH = 15
 O_WIDTH = 15
 SPACE = CELL_SIZE // 4
 
-# Настройка экрана.
-# Задать размер графического окна для игрового поля.
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
-# Установить заголовок окна.
 pygame.display.set_caption('Крестики-нолики')
-# Заполнить фон окна заданным цветом.
 screen.fill(BG_COLOR)
 
 
-# Функция, которая отвечает за отрисовку горизонтальных и вертикальных линий.
 def draw_lines():
     # Горизонтальные линии.
     for i in range(1, BOARD_SIZE):
@@ -52,8 +42,7 @@ def draw_lines():
             LINE_WIDTH
         )
 
-# Функция, которая отвечает за отрисовку фигур 
-# (крестиков и ноликов) на доске. 
+
 def draw_figures(board):
     for row in range(BOARD_SIZE):
         for col in range(BOARD_SIZE):
@@ -94,24 +83,17 @@ def draw_figures(board):
                 )
 
 
-# Сюда нужно добавить функцию save_result().
 def save_result(result):
     with open('results.txt', 'a', encoding='utf-8') as f:
         f.write(result + '\n')
 
 
-# В этой функции описана логика игры. Вам нужно её дополнить. По структуре 
-# тут всё то же самое, что было в вашем коде раньше. 
-# Но есть отличие - вместо метода display() используется 
-# новая функция draw_figures().
 def main():
     game = Board()
     current_player = 'X'
     running = True
     draw_lines()
-    
-    # В цикле обрабатываются такие события, как
-    # нажатие кнопок мыши и закрытие окна.
+
     while running:
 
         for event in pygame.event.get():
@@ -124,13 +106,6 @@ def main():
 
                 clicked_row = mouse_x // CELL_SIZE
                 clicked_col = mouse_y // CELL_SIZE
-
-                # Сюда нужно дописать код:
-                # если ячейка свободна,
-                    # то сделать ход,
-                    # проверить на победу,
-                    # проверить на ничью,
-                    # сменить игрока. 
 
                 if game.board[clicked_row][clicked_col] == ' ':
                     game.make_move(clicked_row, clicked_col, current_player)
@@ -147,11 +122,9 @@ def main():
 
                     current_player = 'O' if current_player == 'X' else 'X'
                     draw_figures(game.board)
-        
-        # Обновить окно игры.
+
         pygame.display.update()
-    
-    # Деинициализирует все модули pygame, которые были инициализированы ранее.
+
     pygame.quit()
 
 
